@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+  margin: 10px;
+}
+
+form{
+  display: inline-block;
+  background-color: burlywood;
+}
+
+form label{
+  display: inline-block;
+  width: 100px;
+}
+
+form div{
+  margin: 20px;
+}
+
+.profile{
+  width: 200px;
+  height: 200px;
+  background-color:coral;
+  border: 2px solid bisque;
+}
+
+.img-box img{
+  position: fixed;
+  left: 1049px;
+  bottom: 325px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+.pic{
+  position: fixed;
+  left: 1000px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  
+}
+
+nav{
+  background-color: coral;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
