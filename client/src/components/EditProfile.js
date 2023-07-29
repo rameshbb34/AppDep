@@ -20,7 +20,7 @@ function EditProfile() {
     // passwordInputRef.current.value= loc.state.password;
     ageInputRef.current.value = loc.state.age;
     contactInputRef.current.value = loc.state.contact;
-    setProfilePic(`http://localhost:2323/${loc.state.profilePic}`);
+    setProfilePic(`/${loc.state.profilePic}`);
   }, []);
 
   let UpdateProfile = async (req, res) => {
@@ -41,7 +41,7 @@ function EditProfile() {
       method: "PUT",
       body: dataTOSend,
     };
-    let JSONData = await fetch("http://localhost:2323/editprofile", reqOptions);
+    let JSONData = await fetch("/editprofile", reqOptions);
     let JSOData = await JSONData.json();
     console.log(JSOData);
     alert("Profile Updated");
