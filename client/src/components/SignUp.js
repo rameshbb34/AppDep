@@ -12,25 +12,25 @@ function SignUp() {
   let [profilePic, setProfilePic] = useState("./images/profilepic.jpg");
 
   let sendSignUptoServerFormData = async (req, res) => {
-    let dataTOSend = new FormData();
-    dataTOSend.append("fn", fnInputRef.current.value);
-    dataTOSend.append("ln", lnInputRef.current.value);
-    dataTOSend.append("email", emailInputRef.current.value);
-    dataTOSend.append("password", passwordInputRef.current.value);
-    dataTOSend.append("age", ageInputRef.current.value);
-    dataTOSend.append("contact", contactInputRef.current.value);
-    // dataTOSend.append("profilePic", ppInputRef.current.file);
-    for (let i = 0; i < ppInputRef.current.files.length; i++) {
-      dataTOSend.append("profilePic", ppInputRef.current.files[i]);
-    }
+    // let dataTOSend = new FormData();
+    // dataTOSend.append("fn", fnInputRef.current.value);
+    // dataTOSend.append("ln", lnInputRef.current.value);
+    // dataTOSend.append("email", emailInputRef.current.value);
+    // dataTOSend.append("password", passwordInputRef.current.value);
+    // dataTOSend.append("age", ageInputRef.current.value);
+    // dataTOSend.append("contact", contactInputRef.current.value);
+    // // dataTOSend.append("profilePic", ppInputRef.current.file);
+    // for (let i = 0; i < ppInputRef.current.files.length; i++) {
+    //   dataTOSend.append("profilePic", ppInputRef.current.files[i]);
+    // }
 
-    let reqOptions = {
-      method: "POST",
-      body: dataTOSend,
-    };
-    let JSONData = await fetch("/signup", reqOptions);
-    let JSOData = await JSONData.json();
-    console.log(JSOData);
+    // let reqOptions = {
+    //   method: "POST",
+    //   body: dataTOSend,
+    // };
+    // let JSONData = await fetch("/signup", reqOptions);
+    // let JSOData = await JSONData.json();
+    // console.log(JSOData);
     alert("Profile Created");
   };
 
