@@ -37,11 +37,7 @@ function Home() {
       </button>
       <h1>Hello {loc.state.fn}</h1>
       <div>
-        <img
-          className="pic"
-          alt=""
-          src={`/${loc.state.profilePic}`}
-        ></img>
+        <img className="pic" alt="" src={`/${loc.state.profilePic}`}></img>
       </div>
       <div>
         <ul>

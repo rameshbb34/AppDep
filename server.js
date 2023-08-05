@@ -4,7 +4,7 @@ const cors = require("cors");
 const multer = require("multer");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const path = require("path")
+const path = require("path");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -24,7 +24,7 @@ mongoose.connect(
 const app = express();
 app.use(cors());
 app.use("/uploads", express.static("uploads"));
-app.use(express.static(path.join(__dirname,"./client/build")))
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 let userSchema = new mongoose.Schema({
   fn: String,
@@ -39,21 +39,21 @@ let userSchema = new mongoose.Schema({
 let User = new mongoose.model("user", userSchema);
 
 app.post("/signup", upload.single("profilePic"), async (req, res) => {
-  console.log(req.body);
-  let hashedPassword = await bcrypt.hash(req.body.password, 10);
-  let newUser = new User({
-    fn: req.body.fn,
-    ln: req.body.ln,
-    email: req.body.email,
-    password: hashedPassword,
-    age: req.body.age,
-    contact: req.body.contact,
-    profilePic: req.file.path,
-  });
-
-  await newUser.save();
-  console.log("received signup data");
-  res.json(["account created successfully"]);
+  // console.log(req.body);
+  // let hashedPassword = await bcrypt.hash(req.body.password, 10);
+  // let newUser = new User({
+  //   fn: req.body.fn,
+  //   ln: req.body.ln,
+  //   email: req.body.email,
+  //   password: hashedPassword,
+  //   age: req.body.age,
+  //   contact: req.body.contact,
+  //   profilePic: req.file.path,
+  // });
+  console.log("signup data");
+  // await newUser.save();
+  // console.log("received signup data");
+  // res.json(["account created successfully"]);
 });
 
 app.put("/editprofile", upload.single("profilePic"), async (req, res) => {
@@ -104,7 +104,6 @@ app.delete("/deleteuser", async (req, res) => {
 app.post("/validateLogin", upload.none(), async (req, res) => {
   let results = await User.find().and({ email: req.body.email });
   console.log(results);
-  
 
   if (results.length > 0) {
     let isPasswordCorrect = await bcrypt.compare(
@@ -119,7 +118,7 @@ app.post("/validateLogin", upload.none(), async (req, res) => {
       );
 
       let userDetails = results[0];
-      console.log(userDetails)
+      console.log(userDetails);
 
       res.json({
         status: "succes",
@@ -140,15 +139,12 @@ app.post("/validateLogin", upload.none(), async (req, res) => {
 });
 
 app.post("/validateToken", upload.none(), async (req, res) => {
-
-
-  let decryptedCredentials = jwt.verify(req.body.token,"RAM")
+  let decryptedCredentials = jwt.verify(req.body.token, "RAM");
 
   console.log(decryptedCredentials);
 
   let results = await User.find().and({ email: decryptedCredentials.email });
   console.log(results);
-  
 
   if (results.length > 0) {
     let isPasswordCorrect = await bcrypt.compare(
@@ -163,7 +159,7 @@ app.post("/validateToken", upload.none(), async (req, res) => {
       );
 
       let userDetails = results[0];
-      console.log(userDetails)
+      console.log(userDetails);
 
       res.json({
         status: "succes",

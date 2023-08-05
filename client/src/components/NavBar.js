@@ -16,7 +16,7 @@ function NavBar(props) {
       <button
         type="button"
         onClick={() => {
-          localStorage.clear()
+          localStorage.clear();
           navigate("/");
         }}
       >

@@ -1,13 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+let initialStore = {
+  loginDetails: {},
+};
+
+let reducer = (updatedStore = initialStore, dispatchedObj) => {
+  if (dispatchedObj.type == "login") {
+    return { ...updatedStore, loginDetails: dispatchedObj.data };
+  }
+
+  return updatedStore;
+};
+
+let store = createStore(reducer);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
